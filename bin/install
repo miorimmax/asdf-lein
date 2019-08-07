@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+download_lein() {
+    local version=$1
+    local install_path=$2
+
+    local opts=""
+
+    if [ -n "$GITHUB_API_TOKEN" ]; then
+        opts="$opts --header 'Authorization: token $GITHUB_API_TOKEN'"
+    fi
+
+    curl --silent \
+         --location \
+         --output "$install_path/lein" \
+         $opts \
+         "https://raw.githubusercontent.com/technomancy/leiningen/$version/bin/lein"
+}
+
+install_lein() {
+    local version=$1
+    local install_path=$2
+
+    download_lein "$version" "$install_path"
+}
+
+install_lein "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"

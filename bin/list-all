@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -euo pipefail
+git ls-remote --tags --refs https://github.com/technomancy/leiningen | sed 's;^.*refs/tags/\(.*\)$;\1;' | xargs echo
