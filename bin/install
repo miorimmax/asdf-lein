@@ -11,13 +11,15 @@ install_lein() {
         opts="$opts --header 'Authorization: token $GITHUB_API_TOKEN'"
     fi
 
+    mkdir -p "$install_path/bin"
+
     curl --silent \
          --location \
-         --output "$install_path/lein" \
+         --output "$install_path/bin/lein" \
          $opts \
          "https://raw.githubusercontent.com/technomancy/leiningen/$version/bin/lein"
 
-    chmod a+x "$install_path/lein"
+    chmod a+x "$install_path/bin/lein"
 }
 
 install_lein "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"
