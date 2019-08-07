@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-download_lein() {
+install_lein() {
     local version=$1
     local install_path=$2
 
@@ -16,13 +16,8 @@ download_lein() {
          --output "$install_path/lein" \
          $opts \
          "https://raw.githubusercontent.com/technomancy/leiningen/$version/bin/lein"
-}
 
-install_lein() {
-    local version=$1
-    local install_path=$2
-
-    download_lein "$version" "$install_path"
+    chmod a+x "$install_path/lein"
 }
 
 install_lein "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"
