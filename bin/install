@@ -7,19 +7,17 @@ install_lein() {
 
     local opts=""
 
-    if [ -n "$GITHUB_API_TOKEN" ]; then
-        opts="$opts --header 'Authorization: token $GITHUB_API_TOKEN'"
-    fi
-
     mkdir -p "$install_path/bin"
 
     curl --silent \
          --location \
          --output "$install_path/bin/lein" \
          $opts \
-         "https://raw.githubusercontent.com/technomancy/leiningen/$version/bin/lein"
+         "https://codeberg.org/leiningen/leiningen/raw/tag/$version/bin/lein"
 
     chmod a+x "$install_path/bin/lein"
+    # run lein to install version to ~/.lein/self-installs/
+    ${install_path}/bin/lein
 }
 
 install_lein "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"
