@@ -17,7 +17,7 @@ install_lein() {
          --location \
          --output "$install_path/bin/lein" \
          $opts \
-         "https://raw.githubusercontent.com/technomancy/leiningen/$version/bin/lein"
+         "https://codeberg.org/leiningen/leiningen/raw/tag/$version/bin/lein"
 
     chmod a+x "$install_path/bin/lein"
 }
