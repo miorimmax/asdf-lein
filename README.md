@@ -7,7 +7,7 @@
 ## Install
 
 ```shell
-asdf plugin-add lein https://github.com/miorimmax/asdf-lein.git
+asdf plugin add lein https://github.com/miorimmax/asdf-lein.git
 ```
 
 ## Requirements
